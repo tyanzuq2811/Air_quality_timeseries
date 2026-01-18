@@ -1,11 +1,5 @@
 # Blog - Q1: Phân Tích Khám Phá Dữ Liệu (EDA) Chất Lượng Không Khí Beijing
 
-> **Tác giả**: Sinh viên FIT-DNU  
-> **Ngày**: 18/01/2026  
-> **Chủ đề**: Time Series Analysis - Air Quality Forecasting  
-> **Dataset**: Beijing Multi-Site Air Quality (2013-2017)
-
----
 
 ## 🎯 Mục Tiêu Q1
 
