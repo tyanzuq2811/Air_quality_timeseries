@@ -116,7 +116,7 @@ Winter (Đông): 1.99%  (thấp - critical monitoring season)
 
 **📊 Heatmap Missing Rate by Station and Month:**
 
-![Missing Heatmap by Station and Month](../images/q1_eda/cell_23_output_2.png)
+![Missing Heatmap by Station and Month](images/q1_eda/cell_23_output_2.png)
 *Hình 2.1: Heatmap tỷ lệ missing PM2.5 theo trạm và tháng (2013-2017)*
 
 ### 2.3. Quan Sát Missing Theo Thời Gian
@@ -215,7 +215,7 @@ Upper fence = Q3 + 1.5×IQR = 111 + 136.5 = 247.50 µg/m³
 
 **📊 Biểu đồ Boxplot - PM2.5 Cross-Station Comparison**
 
-![PM2.5 Cross-Station Boxplot](../images/q1_eda/cell_11_output_3.png)
+![PM2.5 Cross-Station Boxplot](images/q1_eda/cell_11_output_3.png)
 *Hình 3.1: So sánh phân phối PM2.5 giữa 12 trạm quan trắc Beijing (2013-2017)*
 
 **Mô tả biểu đồ:**
@@ -296,7 +296,7 @@ Visual elements:
 
 **📊 Time Series Plot - Full Period (4 years)**
 
-![PM2.5 Time Series Full Period](../images/q1_eda/cell_10_output_1.png)
+![PM2.5 Time Series Full Period](images/q1_eda/cell_10_output_1.png)
 *Hình 4.1: Chuỗi thời gian PM2.5 đầy đủ - Trạm Aotizhongxin (2013-2017, 35,064 giờ)*
 
 **Mô tả biểu đồ:**
@@ -433,7 +433,7 @@ Key visual features:
 
 **📊 Biểu đồ ACF & PACF (PM2.5, lags 0-72h)**
 
-![ACF and PACF Plots](../images/q1_eda/cell_16_output_1.png)
+![ACF and PACF Plots](images/q1_eda/cell_16_output_1.png)
 *Hình 5.1: ACF (trái) và PACF (phải) cho PM2.5 lags 0-72 giờ*
 
 **📈 Biểu đồ ACF (Autocorrelation Function)**
@@ -705,7 +705,7 @@ Critical values:
 
 **Visual Confirmation - Rolling Statistics:**
 
-![Rolling Statistics](../images/q1_eda/cell_13_output_1.png)
+![Rolling Statistics](images/q1_eda/cell_13_output_1.png)
 *Hình 6.1: Rolling mean và std (7-day window) xác nhận stationarity*
 
 **Plot Description:**
