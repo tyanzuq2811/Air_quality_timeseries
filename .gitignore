@@ -1,0 +1,36 @@
+# ===== Python =====
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ===== Jupyter =====
+.ipynb_checkpoints/
+
+# ===== Data (KHÔNG COMMIT) =====
+data/processed/
+data/raw/
+*.csv
+*.parquet
+*.pkl
+*.joblib
+*.npy
+
+# ===== Models =====
+models/
+*.h5
+*.pt
+*.ckpt
+
+# ===== Environments =====
+.env
+.venv
+venv/
+beijing_env/
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+
+# ===== Logs =====
+*.log
