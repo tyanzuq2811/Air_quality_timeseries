@@ -112,29 +112,12 @@ Fall (Thu):    2.18%  (cao - transition period)
 Winter (Đông): 1.99%  (thấp - critical monitoring season)
 ```
 
-**Insight**: Missing rate cao hơn vào mùa hè/thu do nhiệt độ cao ảnh hưởng thiết bịỏ ở Notebook 02
+**Insight**: Missing rate cao hơn vào mùa hè/thu do nhiệt độ cao ảnh hưởng thiết bị
 
-2. **Lag features (5-6%)**
-   - Nguyên nhân: 
-     - lag_24h thiếu ở 24 dòng đầu mỗi trạm
-     - Nếu giá trị gốc thiếu → lag cũng thiếu
-   - Pattern: Missing tập trung ở đầu + lan tỏa từ missing gốc
-   - Giải pháp: Forward-fill hoặc loại bỏ
+**📊 Heatmap Missing Rate by Station and Month:**
 
-**B. Missing ngẫu nhiên (Random Missing):**
-
-3. **Sensor data (PM2.5, PM10, O3: 3-4%)**
-   - Nguyên nhân:
-     - Cảm biến lỗi/hỏng
-     - Điều kiện môi trường khắc nghiệt (mưa, bụi)
-     - Hiệu chuẩn định kỳ
-   - Pattern: **Rải đều theo thời gian**, nhưng có cluster vào mùa đông
-   - Giải pháp: Interpolation (linear hoặc time-weighted)
-
-4. **Weather data (TEMP, PRES: 1-2%)**
-   - Nguyên nhân: Ít missing hơn vì thiết bị đo thời tiết ổn định hơn
-   - Pattern: Rải đều
-   - Giải pháp: Forward-fill hoặc interpolation
+![Missing Heatmap by Station and Month](../images/q1_eda/cell_23_output_2.png)
+*Hình 2.1: Heatmap tỷ lệ missing PM2.5 theo trạm và tháng (2013-2017)*
 
 ### 2.3. Quan Sát Missing Theo Thời Gian
 
@@ -232,6 +215,9 @@ Upper fence = Q3 + 1.5×IQR = 111 + 136.5 = 247.50 µg/m³
 
 **📊 Biểu đồ Boxplot - PM2.5 Cross-Station Comparison**
 
+![PM2.5 Cross-Station Boxplot](../images/q1_eda/cell_11_output_3.png)
+*Hình 3.1: So sánh phân phối PM2.5 giữa 12 trạm quan trắc Beijing (2013-2017)*
+
 **Mô tả biểu đồ:**
 ```
 [Boxplot comparing PM2.5 across 12 Beijing stations]
@@ -309,6 +295,9 @@ Visual elements:
 ### 4.1. Đồ Thị Toàn Giai Đoạn (2013-2017) - Aotizhongxin Station
 
 **📊 Time Series Plot - Full Period (4 years)**
+
+![PM2.5 Time Series Full Period](../images/q1_eda/cell_10_output_1.png)
+*Hình 4.1: Chuỗi thời gian PM2.5 đầy đủ - Trạm Aotizhongxin (2013-2017, 35,064 giờ)*
 
 **Mô tả biểu đồ:**
 ```
@@ -442,7 +431,12 @@ Key visual features:
 
 ### 5.2. ACF/PACF Plots Analysis
 
-**📊 Biểu đồ ACF (Autocorrelation Function)**
+**📊 Biểu đồ ACF & PACF (PM2.5, lags 0-72h)**
+
+![ACF and PACF Plots](../images/q1_eda/cell_16_output_1.png)
+*Hình 5.1: ACF (trái) và PACF (phải) cho PM2.5 lags 0-72 giờ*
+
+**📈 Biểu đồ ACF (Autocorrelation Function)**
 
 **Mô tả biểu đồ:**
 ```
@@ -708,7 +702,11 @@ Critical values:
    - Stationarity tests chỉ kiểm tra **trend stationarity**
    - Vẫn có **seasonality** (non-stationary về seasonality)
    - → Cần SARIMA thay vì ARIMA thuần
- - Rolling Statistics
+
+**Visual Confirmation - Rolling Statistics:**
+
+![Rolling Statistics](../images/q1_eda/cell_13_output_1.png)
+*Hình 6.1: Rolling mean và std (7-day window) xác nhận stationarity*
 
 **Plot Description:**
 - **Blue line**: PM2.5 raw series (daily sampled to reduce clutter)
