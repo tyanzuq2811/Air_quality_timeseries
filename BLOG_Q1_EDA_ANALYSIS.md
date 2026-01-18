@@ -1,5 +1,80 @@
 # Blog - Q1: Phân Tích Khám Phá Dữ Liệu (EDA) Chất Lượng Không Khí Beijing
 
+**Họ và tên**: [Tên sinh viên]  
+**MSSV**: [Mã số sinh viên]  
+**Lớp**: FIT-DNU Data Mining  
+**Ngày**: 19/01/2026
+
+---
+
+## ⚙️ Cấu Hình Pipeline (Configuration)
+
+```python
+# Dataset Configuration
+DATASET: Beijing Multi-Site Air Quality (2013-2017)
+STATIONS: 12 stations (Aotizhongxin, Changping, Dingling, ..., Wanshouxigong)
+FREQUENCY: Hourly (35,064 hours per station)
+TOTAL_RECORDS: 420,768 observations
+
+# Feature Engineering Parameters
+LAG_HOURS: [1, 3, 24]  # Lag features for autocorrelation
+TIME_FEATURES: hour_sin, hour_cos, day_of_week, is_weekend
+TARGET_VARIABLE: PM2.5 (µg/m³)
+
+# EDA Analysis Parameters
+OUTLIER_METHOD: IQR (1.5 × IQR rule)
+STATIONARITY_TESTS: ADF, KPSS
+ACF_LAGS: 0-72 hours (3 days)
+ROLLING_WINDOW: 7 days (168 hours)
+
+# Output Files
+CLEANED_DATA: data/processed/cleaned.parquet
+NOTEBOOK_OUTPUT: notebooks/runs/preprocessing_and_eda_run.ipynb
+```
+
+---
+
+## 📚 Mục Lục (Table of Contents)
+
+1. [**Kiểm Tra Khoảng Thời Gian & Tần Suất Dữ Liệu**](#1-%EF%B8%8F-ki%E1%BB%83m-tra-kho%E1%BA%A3ng-th%E1%BB%9Di-gian--t%E1%BA%A7n-su%E1%BA%A5t-d%E1%BB%AF-li%E1%BB%87u)
+   - 1.1. Khoảng thời gian phủ (Coverage)
+   - 1.2. Xác nhận tính liên tục timeline
+
+2. [**Phân Tích Missing Pattern**](#2--ph%C3%A2n-t%C3%ADch-missing-pattern)
+   - 2.1. Missing theo biến (Variable-wise)
+   - 2.2. Missing Pattern by Time (Year x Season)
+   - 2.3. Quan Sát Missing Theo Thời Gian
+
+3. [**Boxplot & Quantile - Phát Hiện Outliers**](#3--boxplot--quantile---ph%C3%A1t-hi%E1%BB%87n-outliers)
+   - 3.1. Phân Tích PM2.5 Distribution
+   - 3.2. Nhận Diện Outliers (IQR Method)
+   - 3.3. Phân Phối & So Sánh Các Biến
+   - 3.4. Ý nghĩa cho Modeling
+
+4. [**Vẽ Chuỗi PM2.5 Theo Thời Gian**](#4--v%E1%BA%BD-chu%E1%BB%97i-pm25-theo-th%E1%BB%9Di-gian)
+   - 4.1. Đồ Thị Toàn Giai Đoạn (2013-2017)
+   - 4.2. Zoom Vào Mùa Đông vs Mùa Hè
+
+5. [**Autocorrelation Analysis**](#5--autocorrelation-analysis)
+   - 5.1. Lag Correlation Pattern
+   - 5.2. ACF & PACF Plots
+   - 5.3. Giải Thích Patterns Chi Tiết
+
+6. [**Stationarity Confirmation**](#6--stationarity-confirmation)
+   - 6.1. ADF Test (Augmented Dickey-Fuller)
+   - 6.2. KPSS Test
+   - 6.3. Kết Quả Tổng Hợp
+   - 6.4. Ý Nghĩa Cho ARIMA Modeling
+   - 6.5. Visual Confirmation - Rolling Statistics
+
+7. [**Biến Nào Thiếu Đáng Lo Nhất & Vì Sao?**](#7-%E2%9A%A0%EF%B8%8F-bi%E1%BA%BFn-n%C3%A0o-thi%E1%BA%BFu-%C4%91%C3%A1ng-lo-nh%E1%BA%A5t--v%C3%AC-sao)
+   - 7.1. Ranking Theo Mức Độ Quan Trọng
+
+8. [**Kết Luận Q1**](#-k%E1%BA%BFt-lu%E1%BA%ADn-q1)
+   - 8.1. Code đã có những gì?
+   - 8.2. Checklist Hoàn Thiện EDA
+
+---
 
 ## 🎯 Mục Tiêu Q1
 
