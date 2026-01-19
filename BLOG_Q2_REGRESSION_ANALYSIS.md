@@ -38,7 +38,7 @@ NOTEBOOK: notebooks/runs/regression_modelling_run.ipynb
 
 ---
 
-## 📚 Mục Lục
+## Mục Lục
 
 1. [**Từ Time Series → Supervised Regression**](#1--t%E1%BB%AB-time-series--supervised-regression)
    - 1.1. Tư Duy Chuyển Đổi
@@ -77,7 +77,7 @@ NOTEBOOK: notebooks/runs/regression_modelling_run.ipynb
 
 ---
 
-## 🎯 Mục Tiêu Q2
+## Mục Tiêu Q2
 
 **Câu hỏi nghiên cứu:**
 > Có thể dự đoán PM2.5 tại thời điểm t+1h bằng **Supervised Regression** (feature-based approach) không? Performance như thế nào so với time series thuần (ARIMA)?
@@ -92,7 +92,7 @@ NOTEBOOK: notebooks/runs/regression_modelling_run.ipynb
 
 ---
 
-## 1. 🔄 Từ Time Series → Supervised Regression
+## 1. Từ Time Series → Supervised Regression
 
 ### 1.1. Tư Duy Chuyển Đổi
 
@@ -136,7 +136,7 @@ Phương pháp: Học ánh xạ từ features → target bằng thuật toán ML
 
 ---
 
-## 2. 📊 Chuẩn Bị Dữ Liệu
+## 2. Chuẩn Bị Dữ Liệu
 
 ### 2.1. Chiến Lược Tạo Đặc Trưng
 
@@ -218,7 +218,7 @@ Top missing features:
 
 ---
 
-## 3. ⚠️ Rò Rỉ Dữ Liệu & Chia Train/Test Theo Thời Gian
+## 3. Rò Rỉ Dữ Liệu & Chia Train/Test Theo Thời Gian
 
 ### 3.1. Tại Sao Random Split KHÔNG Hợp Lệ?
 
@@ -281,10 +281,10 @@ Tập kiểm tra:
 
 ### 3.3. Cân Nhắc Cross-Validation
 
-**Standard k-fold CV: ❌ KHÔNG dùng cho time series**
+**Standard k-fold CV: KHÔNG dùng cho time series**
 - Random shuffle → temporal leakage
 
-**Time series CV: ✅ Có thể dùng (optional)**
+**Time series CV: Có thể dùng (optional)**
 ```
 Fold 1: Train [2013-2014] → Validate [2015 Q1]
 Fold 2: Train [2013-2015] → Validate [2015 Q2]
@@ -372,7 +372,7 @@ Sử dụng bộ nhớ: ~2-3GB (hợp lý cho 400k mẫu)
 
 ---
 
-## 5. 📈 Kết Quả Đánh Giá Mô Hình
+## 5. Kết Quả Đánh Giá Mô Hình
 
 ### 5.1. Chỉ Số Hiệu Suất
 
@@ -460,7 +460,7 @@ Sử dụng bộ nhớ: ~2-3GB (hợp lý cho 400k mẫu)
 
 ---
 
-## 6. 🔍 Phân Tích Tầm Quan Trọng Đặc Trưng
+## 6. Phân Tích Tầm Quan Trọng Đặc Trưng
 
 ### 6.1. Top 10 Đặc Trưng Quan Trọng Nhất
 
@@ -660,7 +660,7 @@ PM10, SO2, NO2, CO, O3 lags: Combined ~5%
 
 ---
 
-## 8. 🎓 Bài Học Rút Ra & Thực Hành Tốt Nhất
+## 8. Bài Học Rút Ra & Thực Hành Tốt Nhất
 
 ### 8.1. Điểm Chính Rút Ra
 
@@ -734,7 +734,7 @@ PM10, SO2, NO2, CO, O3 lags: Combined ~5%
 
 ---
 
-## 9. 🔗 Kết Nối Với Q1 & Q3
+## 9. Kết Nối Với Q1 & Q3
 
 ### 9.1. Q1 EDA Đóng Góp Gì Cho Q2
 
@@ -826,14 +826,14 @@ Q3 (ARIMA) → Time series approach
 
 ---
 
-## 10. 📊 Tóm Tắt & Kết Luận
+## 10. Tóm Tắt & Kết Luận
 
 ### 10.1. Trả Lời Câu Hỏi
 
 **Q2 Research Question:**
 > Có thể dự đoán PM2.5 bằng supervised regression approach không?
 
-**Answer: ✅ YES, và rất hiệu quả**
+**Answer: YES, và rất hiệu quả**
 
 **Evidence:**
 - RMSE = 25.33 µg/m³ (32% of mean)
@@ -919,7 +919,7 @@ Q3 (ARIMA) → Time series approach
 
 ---
 
-## 📌 Phụ Lục
+## Phụ Lục
 
 ### A. Danh Sách Đặc Trưng (57 features)
 
