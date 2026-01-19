@@ -1,11 +1,5 @@
-# 📊 Blog Q2: Phương Pháp Hồi Quy Cho Dự Báo PM2.5
+# Blog Q2: Phương Pháp Hồi Quy Cho Dự Báo PM2.5
 
-**Họ và tên**: [Tên sinh viên]  
-**MSSV**: [Mã số sinh viên]  
-**Lớp**: FIT-DNU Data Mining  
-**Ngày**: 19/01/2026
-
----
 
 ## ⚙️ Cấu Hình Pipeline
 
