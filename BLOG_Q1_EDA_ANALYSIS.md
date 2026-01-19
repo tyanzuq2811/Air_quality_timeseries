@@ -16,12 +16,12 @@ STATIONS: 12 stations (Aotizhongxin, Changping, Dingling, ..., Wanshouxigong)
 FREQUENCY: Hourly (35,064 hours per station)
 TOTAL_RECORDS: 420,768 observations
 
-# Feature Engineering Parameters
-LAG_HOURS: [1, 3, 24]  # Lag features for autocorrelation
+# Tham Số Kỹ Thuật Đặc Trưng
+LAG_HOURS: [1, 3, 24]  # Đặc trưng trễ cho tự tương quan
 TIME_FEATURES: hour_sin, hour_cos, day_of_week, is_weekend
 TARGET_VARIABLE: PM2.5 (µg/m³)
 
-# EDA Analysis Parameters
+# Tham Số Phân Tích EDA
 OUTLIER_METHOD: IQR (1.5 × IQR rule)
 STATIONARITY_TESTS: ADF, KPSS
 ACF_LAGS: 0-72 hours (3 days)
@@ -42,7 +42,7 @@ NOTEBOOK_OUTPUT: notebooks/runs/preprocessing_and_eda_run.ipynb
 
 2. [**Phân Tích Missing Pattern**](#2--ph%C3%A2n-t%C3%ADch-missing-pattern)
    - 2.1. Missing theo biến (Variable-wise)
-   - 2.2. Missing Pattern by Time (Year x Season)
+   - 2.2. Mẫu Missing Theo Thời Gian (Năm × Mùa)
    - 2.3. Quan Sát Missing Theo Thời Gian
 
 3. [**Boxplot & Quantile - Phát Hiện Outliers**](#3--boxplot--quantile---ph%C3%A1t-hi%E1%BB%87n-outliers)
@@ -65,7 +65,7 @@ NOTEBOOK_OUTPUT: notebooks/runs/preprocessing_and_eda_run.ipynb
    - 6.2. KPSS Test
    - 6.3. Kết Quả Tổng Hợp
    - 6.4. Ý Nghĩa Cho ARIMA Modeling
-   - 6.5. Visual Confirmation - Rolling Statistics
+   - 6.5. Xác Nhận Trực Quan - Thống Kê Trượt
 
 7. [**Biến Nào Thiếu Đáng Lo Nhất & Vì Sao?**](#7-%E2%9A%A0%EF%B8%8F-bi%E1%BA%BFn-n%C3%A0o-thi%E1%BA%BFu-%C4%91%C3%A1ng-lo-nh%E1%BA%A5t--v%C3%AC-sao)
    - 7.1. Ranking Theo Mức Độ Quan Trọng
@@ -101,20 +101,20 @@ Kiểm tra xem code hiện tại đã đầy đủ các thành phần để hi�
 
 **Kết quả phân tích:**
 
-**TẤT CẢ 12 TRẠM ĐỀU LIÊN TỤC (No gaps)**
+**TẤT CẢ 12 TRẠM ĐỀU LIÊN TỤC (Không có khoảng trống)**
 ```
-Aotizhongxin: No gaps (continuous)
-Changping: No gaps (continuous)
-Dingling: No gaps (continuous)
-Dongsi: No gaps (continuous)
-Guanyuan: No gaps (continuous)
-Gucheng: No gaps (continuous)
-Huairou: No gaps (continuous)
-Nongzhanguan: No gaps (continuous)
-Shunyi: No gaps (continuous)
-Tiantan: No gaps (continuous)
-Wanliu: No gaps (continuous)
-Wanshouxigong: No gaps (continuous)
+Aotizhongxin: Không có khoảng trống (liên tục)
+Changping: Không có khoảng trống (liên tục)
+Dingling: Không có khoảng trống (liên tục)
+Dongsi: Không có khoảng trống (liên tục)
+Guanyuan: Không có khoảng trống (liên tục)
+Gucheng: Không có khoảng trống (liên tục)
+Huairou: Không có khoảng trống (liên tục)
+Nongzhanguan: Không có khoảng trống (liên tục)
+Shunyi: Không có khoảng trống (liên tục)
+Tiantan: Không có khoảng trống (liên tục)
+Wanliu: Không có khoảng trống (liên tục)
+Wanshouxigong: Không có khoảng trống (liên tục)
 ```
 
 **Ý nghĩa:**
@@ -127,11 +127,11 @@ Wanshouxigong: No gaps (continuous)
 
 ## 2. 📊 Tỷ Lệ Thiếu Theo Từng Biến
 
-### 2.1. Missing Rate By Variable
+### 2.1. Tỷ Lệ Missing Theo Biến
 
 **Top 15 biến có missing cao nhất (Kết quả thực tế):**
 
-| Biến | Missing Count | Missing % | Loại | Mức độ quan trọng |
+| Biến | Số Lượng Missing | Tỷ Lệ Missing % | Loại | Mức độ quan trọng |
 |------|---------------|-----------|------|-------------------|
 | **CO_lag24** | 20,975 | 4.98% | Lag Feature | 🟠 High |
 | **CO_lag3** | 20,737 | 4.93% | Lag Feature | 🟠 High |
@@ -160,7 +160,7 @@ Wanshouxigong: No gaps (continuous)
    - Pattern: Missing = (lag period initialization) + (raw missing propagation)
    - Giải pháp: Forward-fill hoặc loại bỏ rows
 
-**B. Missing ngẫu nhiên (Random Sensor Failures):**
+**B. Missing ngẫu nhiên (Lỗi Cảm Biến Ngẫu Nhiên):**
 
 3. **Raw sensor data**
    - **CO (4.92%, 20,701 records)**: Cao nhất - cảm biến CO dễ hỏng, cần hiệu chuẩn thường xuyên
@@ -168,9 +168,9 @@ Wanshouxigong: No gaps (continuous)
    - **NO2 (2.88%, 12,116 records)**: Thấp - công nghệ đo NO2 ổn định hơn
    - **PM2.5 (2.08%, 8,739 records)**: Tương đối thấp - ưu tiên cao nên maintain tốt
 
-**C. Missing Pattern By Time:**
+**C. Mẫu Missing Theo Thời Gian:**
 
-**By Year:**
+**Theo Năm:**
 ```
 2013: 1.40%  (năm đầu, thiết bị mới)
 2014: 2.72%  (cao nhất - aging equipment)
@@ -179,7 +179,7 @@ Wanshouxigong: No gaps (continuous)
 2017: 1.55%  (tốt nhất - chỉ có 2 tháng data)
 ```
 
-**By Season:**
+**Theo Mùa:**
 ```
 Spring (Xuân): 1.98%
 Summer (Hè):   2.15%  (cao nhất - high temperature affects sensors)
@@ -189,9 +189,9 @@ Winter (Đông): 1.99%  (thấp - critical monitoring season)
 
 **Insight**: Missing rate cao hơn vào mùa hè/thu do nhiệt độ cao ảnh hưởng thiết bị
 
-**📊 Heatmap Missing Rate by Station and Month:**
+**📊 Bản Đồ Nhiệt Tỷ Lệ Missing Theo Trạm và Tháng:**
 
-![Missing Heatmap by Station and Month](images/q1_eda/cell_23_output_2.png)
+![Bản Đồ Nhiệt Missing Theo Trạm và Tháng](images/q1_eda/cell_23_output_2.png)
 *Hình 2.1: Heatmap tỷ lệ missing PM2.5 theo trạm và tháng (2013-2017)*
 
 ### 2.3. Quan Sát Missing Theo Thời Gian
@@ -309,7 +309,7 @@ Visual elements:
 - Colors: Alternating per station for clarity
 ```
 
-**Observations from boxplot:**
+**Nhận xét từ biểu đồ hộp:**
 1. **High consistency**: All 12 stations có distribution tương tự
    - Median range: 50-60 µg/m³ (variations ±10%)
    - Q3 range: 105-120 µg/m³ (tight clustering)
@@ -565,7 +565,7 @@ Pattern observed:
  Lag 24:|██| 0.08 ← Small spike (seasonal)
  Lag 25+:|  | ~0.00
 
-Key feature: Sharp cutoff after lag 1 (classic AR(1) signature)
+Đặc điểm chính: Giảm đột ngột sau trễ 1 (dấu hiệu AR(1) cổ điển)
 ```
 
 **Partial Autocorrelation Function (PACF):**
@@ -574,7 +574,7 @@ Key feature: Sharp cutoff after lag 1 (classic AR(1) signature)
 - **Lag 24**: Small spike (~0.08) → Seasonal AR component (yếu hơn lag 1)
 - **Lag 25+**: Gần 0 (không significant)
 - **Implication**:
-  - **Classic AR(1) pattern** - PACF cuts off after lag 1
+  - **Mẫu AR(1) cổ điển** - PACF giảm đột ngột sau trễ 1
   - Suggest ARIMA order: p=1 or p=2 (if lag 2 marginally significant)
   - Seasonal AR(1) tại lag 24 → SARIMA(1,0,q)(1,0,Q)[24]
   - Model candidate: SARIMA(1,0,0)(1,0,0)[24] hoặc SARIMA(2,0,0)(1,0,0)[24]
@@ -644,12 +644,12 @@ Rate:   ↓2%   ↓4%   ↓6%   ↓16%  ↑4%   ↓8%   ↓8%   ↓3%   ↓19%
 | Model Type | Config | Rationale |
 |------------|--------|-----------|
 | **Baseline** | AR(1) | Lag 1h corr=0.98 dominant |
-| **Simple** | AR(2) | PACF cuts after lag 2 |
-| **Seasonal** | SARIMA(1,0,0)(1,0,0)[24] | Daily seasonality at lag 24 |
-| **Complex** | SARIMA(2,0,0)(1,0,0)[24] | AR(2) + Seasonal AR(1) |
-| **With MA** | SARIMA(2,0,1)(1,0,1)[24] | Add MA to capture shocks |
+| **Đơn giản** | AR(2) | PACF giảm đột ngột sau trễ 2 |
+| **Theo mùa** | SARIMA(1,0,0)(1,0,0)[24] | Tính mùa hàng ngày tại trễ 24 |
+| **Phức tạp** | SARIMA(2,0,0)(1,0,0)[24] | AR(2) + AR mùa(1) |
+| **Với MA** | SARIMA(2,0,1)(1,0,1)[24] | Thêm MA để bắt cú sốc |
 
-**Recommended**: Start with SARIMA(1,0,0)(1,0,0)[24], then test (2,0,0)(1,0,0)[24]
+**Khuyến nghị**: Bắt đầu với SARIMA(1,0,0)(1,0,0)[24], sau đó thử (2,0,0)(1,0,0)[24]
 - Slight bump tại 168h → Weak weekly cycle
 
 **Implications cho Modeling:**
@@ -745,7 +745,7 @@ Critical values:
 **Ý nghĩa:**
 - KPSS test confirms ADF conclusion
 - Statistic 0.2008 xa ngưỡng critical (0.347-0.739)
-- → Strong evidence for stationarity
+- → Bằng chứng mạnh cho tính dừng
 - Warning không ảnh hưởng kết luận (p > 0.05 vẫn đủ mạnh)
 
 ### 6.4. Tổng Hợp & Giải Thích
@@ -789,13 +789,13 @@ Critical values:
 - **Orange line**: Rolling std (window = 7 days = 168 hours)
 - **Time range**: 2013-03 to 2017-02 (4 years full period)
 
-**Observations from Rolling Mean:**
-1. **No long-term drift**: Mean oscillates around 80-100 µg/m³ consistently
-2. **Seasonal fluctuation**: Mean higher in winter (120-180), lower in summer (40-80)
-3. **Mean-reverting**: Không có trend tăng/giảm dài hạn - always returns to baseline
-4. **Stable center**: Despite seasonality, không có structural break or regime change
+**Nhận xét từ Trung Bình Trượt:**
+1. **Không trôi dài hạn**: Trung bình dao động quanh 80-100 µg/m³ ổn định
+2. **Biến động theo mùa**: Trung bình cao vào mùa đông (120-180), thấp vào mùa hè (40-80)
+3. **Quay về trung bình**: Không có xu hướng tăng/giảm dài hạn - luôn quay về đường cơ sở
+4. **Tâm ổn định**: Bất chấp tính mùa, không có sự đứt gãy cấu trúc hay thay đổi chế độ
 
-**Observations from Rolling Std:**
+**Nhận xét từ Độ Lệch Chuẩn Trượt:**
 1. **Variance bounded**: Std oscillates 50-120 µg/m³, không explode
 2. **Higher in winter**: Std peaks ~120-150 in winter months (more variability)
 3. **Lower in summer**: Std drops ~30-60 in summer (more stable pollution)
@@ -842,7 +842,7 @@ Recommended model structure:
 
 3. **Không thể impute dễ dàng:**
    - Impute từ station khác: Risky vì PM2.5 vary nhiều giữa các vùng
-   - Interpolation: OK cho gap ngắn (<3h), nhưng risky cho gap dài
+   - Nội suy: Chấp nhận được cho khoảng trống ngắn (<3h), nhưng rủi ro cho khoảng trống dài
    - Forward-fill: Không hợp lý vì PM2.5 thay đổi nhanh
 
 4. **Tập trung theo thời gian:**
@@ -891,7 +891,7 @@ Recommended model structure:
 
 **Giải pháp:**
 - Impute từ weather features (TEMP, WSPM có correlation với O3)
-- Hoặc dùng model-based imputation (predict O3 from other features)
+- Hoặc dùng phương pháp điền dựa trên mô hình (dự đoán O3 từ các đặc trưng khác)
 - Với ARIMA (univariate): Không ảnh hưởng
 
 ---
@@ -993,7 +993,7 @@ missing CO_lag24 tại 4.98% samples (highest rate)
 - **Remove nhiều**: Mất data (~8-10%), nhưng quality cao hơn
 
 **Recommend**: 
-- Combine cả 2: Impute khi reasonable (gap nhỏ), remove khi risky (gap lớn)
+- Kết hợp cả 2: Điền khi hợp lý (khoảng trống nhỏ), loại bỏ khi rủi ro (khoảng trống lớn)
 - Document clearly trong report về missing handling strategy
 
 ---

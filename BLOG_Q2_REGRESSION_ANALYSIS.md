@@ -7,27 +7,27 @@
 
 ---
 
-## ⚙️ Cấu Hình Pipeline (Configuration)
+## ⚙️ Cấu Hình Pipeline
 
 ```python
-# Regression Model Configuration
+# Cấu Hình Mô Hình Hồi Quy
 MODEL_TYPE: Random Forest Regressor
-TARGET: PM2.5 at t+1h
+TARGET: PM2.5 tại t+1h
 HORIZON: Dự báo trước 1 giờ
 
-# Data Split Parameters
+# Tham Số Chia Dữ Liệu
 CUTOFF_DATE: '2017-01-01'  # Train: 2013-2016, Test: 2017 (2 months)
 SPLIT_METHOD: Time-based (chronological)
 TRAIN_SIZE: 395,010 samples (94%)
 TEST_SIZE: 16,722 samples (6%)
 
-# Feature Engineering
-LAG_FEATURES: PM2.5_lag1, PM2.5_lag3, PM2.5_lag24 (from Q1 autocorrelation)
-WEATHER_FEATURES: TEMP, PRES, DEWP, WSPM (4 features)
-TIME_FEATURES: hour_sin, hour_cos, day_of_week, is_weekend (4 features)
-TOTAL_FEATURES: 57 features
+# Kỹ Thuật Đặc Trưng
+LAG_FEATURES: PM2.5_lag1, PM2.5_lag3, PM2.5_lag24 (từ tự tương quan Q1)
+WEATHER_FEATURES: TEMP, PRES, DEWP, WSPM (4 đặc trưng)
+TIME_FEATURES: hour_sin, hour_cos, day_of_week, is_weekend (4 đặc trưng)
+TOTAL_FEATURES: 57 đặc trưng
 
-# Model Hyperparameters
+# Siêu Tham Số Mô Hình
 Random Forest:
   n_estimators: 100
   max_depth: 20
@@ -35,7 +35,7 @@ Random Forest:
   min_samples_leaf: 4
   random_state: 42
 
-# Output Files
+# Tệp Đầu Ra
 MODEL_FILE: data/processed/regressor.joblib
 PREDICTIONS: data/processed/regression_predictions_sample.csv
 METRICS: data/processed/regression_metrics.json
@@ -44,42 +44,42 @@ NOTEBOOK: notebooks/runs/regression_modelling_run.ipynb
 
 ---
 
-## 📚 Mục Lục (Table of Contents)
+## 📚 Mục Lục
 
 1. [**Từ Time Series → Supervised Regression**](#1--t%E1%BB%AB-time-series--supervised-regression)
    - 1.1. Tư Duy Chuyển Đổi
    - 1.2. Tại Sao Regression Có Thể Hoạt Động?
 
-2. [**Feature Engineering Strategy**](#2--feature-engineering-strategy)
-   - 2.1. Lag Features (Từ Q1 Autocorrelation)
-   - 2.2. Weather Features
-   - 2.3. Time Features
+2. [**Chiến Lược Kỹ Thuật Đặc Trưng**](#2--feature-engineering-strategy)
+   - 2.1. Đặc Trưng Trễ (Từ Tự Tương Quan Q1)
+   - 2.2. Đặc Trưng Thời Tiết
+   - 2.3. Đặc Trưng Thời Gian
 
 3. [**Time-Based Split (Tránh Data Leakage)**](#3--time-based-split-tr%C3%A1nh-data-leakage)
    - 3.1. Vì Sao Không Dùng Random Split?
    - 3.2. Train/Test Split Strategy
 
-4. [**Model Selection & Training**](#4--model-selection--training)
+4. [**Lựa Chọn & Huấn Luyện Mô Hình**](#4--model-selection--training)
    - 4.1. Tại Sao Chọn Random Forest?
-   - 4.2. Training Process
+   - 4.2. Quá Trình Huấn Luyện
 
-5. [**Performance Evaluation**](#5--performance-evaluation)
-   - 5.1. Metrics Used
-   - 5.2. Results Summary
+5. [**Đánh Giá Hiệu Suất**](#5--performance-evaluation)
+   - 5.1. Chỉ Số Sử Dụng
+   - 5.2. Tóm Tắt Kết Quả
 
-6. [**Feature Importance Analysis**](#6--feature-importance-analysis)
-   - 6.1. Top Features
-   - 6.2. Feature Importance Insights
+6. [**Phân Tích Độ Quan Trọng Đặc Trưng**](#6--feature-importance-analysis)
+   - 6.1. Đặc Trưng Hàng Đầu
+   - 6.2. Thông Tin Chi Tiết Độ Quan Trọng
 
-7. [**Predictions Visualization**](#7--predictions-visualization)
-   - 7.1. Forecast vs Actual Plot
-   - 7.2. Error Distribution
+7. [**Trực Quan Hóa Dự Đoán**](#7--predictions-visualization)
+   - 7.1. Biểu Đồ Dự Báo vs Thực Tế
+   - 7.2. Phân Phối Lỗi
 
-8. [**Kết Luận & Next Steps**](#8--k%E1%BA%BFt-lu%E1%BA%ADn--next-steps)
-   - 8.1. Key Findings
-   - 8.2. Recommendations for Improvement
+8. [**Kết Luận & Bước Tiếp Theo**](#8--k%E1%BA%BFt-lu%E1%BA%ADn--next-steps)
+   - 8.1. Phát Hiện Chính
+   - 8.2. Khuyến Nghị Cải Thiện
 
-9. [**So Sánh Với ARIMA (Preview Q3)**](#9--so-s%C3%A1nh-v%E1%BB%9Bi-arima-preview-q3)
+9. [**So Sánh Với ARIMA (Xem Trước Q3)**](#9--so-s%C3%A1nh-v%E1%BB%9Bi-arima-preview-q3)
 
 ---
 

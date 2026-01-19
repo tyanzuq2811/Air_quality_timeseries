@@ -7,12 +7,12 @@
 
 ---
 
-## ⚙️ Cấu Hình Pipeline (Configuration)
+## ⚙️ Cấu Hình Pipeline
 
 ```python
-# ARIMA Model Configuration
+# Cấu Hình Mô Hình ARIMA
 MODEL_TYPE: ARIMA (Chuỗi Thời Gian Đơn Biến)
-STATION: Aotizhongxin (single station analysis)
+STATION: Aotizhongxin (phân tích một trạm)
 TARGET: PM2.5 hourly sequence
 HORIZON: Dự báo nhiều bước (1-336 giờ)
 
@@ -35,12 +35,12 @@ BEST_MODEL: ARIMA(1, 0, 3)
   Bậc MA q = 3: Cấu trúc sai số với 3 lần trễ
   AIC: 294,792.71 (thấp nhất trong các ứng viên)
 
-# Stationarity Tests (from Q1)
+# Kiểm Tra Tính Dừng (từ Q1)
 ADF_STATISTIC: -19.53 (p < 0.001) → Stationary
 KPSS_STATISTIC: 0.20 (p > 0.05) → Stationary
 KẾT LUẬN: d = 0 là đủ
 
-# Output Files
+# Tệp Đầu Ra
 MODEL_FILE: data/processed/arima_pm25_model.pkl
 PREDICTIONS: data/processed/arima_pm25_predictions.csv
 TÓM TẮT: data/processed/arima_pm25_summary.json
@@ -49,39 +49,39 @@ NOTEBOOK: notebooks/runs/arima_forecasting_run.ipynb
 
 ---
 
-## 📚 Mục Lục (Table of Contents)
+## 📚 Mục Lục
 
-1. [**ARIMA vs Regression: Paradigm Shift**](#1--arima-vs-regression-paradigm-shift)
+1. [**ARIMA vs Hồi Quy: Thay Đổi Phạm Trù**](#1--arima-vs-regression-paradigm-shift)
    - 1.1. Khác Biệt Về Khái Niệm
    - 1.2. ARIMA Components
 
-2. [**Data Preparation for ARIMA**](#2--data-preparation-for-arima)
-   - 2.1. Single Station Selection
+2. [**Chuẩn Bị Dữ Liệu Cho ARIMA**](#2--data-preparation-for-arima)
+   - 2.1. Lựa Chọn Trạm Đơn
    - 2.2. Định Dạng Chuỗi Thời Gian
 
-3. [**Stationarity Validation (From Q1)**](#3--stationarity-validation-from-q1)
+3. [**Xác Nhận Tính Dừng (Từ Q1)**](#3--stationarity-validation-from-q1)
    - 3.1. Tóm Tắt Kết Quả ADF & KPSS
    - 3.2. Quyết Định Sai Phân
 
-4. [**ACF/PACF Analysis (From Q1)**](#4--acfpacf-analysis-from-q1)
+4. [**Phân Tích ACF/PACF (Từ Q1)**](#4--acfpacf-analysis-from-q1)
    - 4.1. Hướng Dẫn Bậc Mô Hình Ban Đầu
    - 4.2. Mẫu Hình Theo Mùa
 
 5. [**Tìm Kiếm Lưới Cho Bậc ARIMA Tốt Nhất**](#5--grid-search-for-best-arima-order)
    - 5.1. Không Gian Tìm Kiếm
-   - 5.2. Model Selection Criteria
+   - 5.2. Tiêu Chí Lựa Chọn Mô Hình
    - 5.3. Mô Hình Tốt Nhất: ARIMA(1,0,3)
 
-6. [**Fitting Mô Hình & Chẩn Đoán**](#6--model-fitting--diagnostics)
+6. [**Khớp Mô Hình & Chẩn Đoán**](#6--model-fitting--diagnostics)
    - 6.1. Ước Lượng Tham Số
    - 6.2. Chẩn Đoán Phần Dư
 
-7. [**Forecasting & Evaluation**](#7--forecasting--evaluation)
+7. [**Dự Báo & Đánh Giá**](#7--forecasting--evaluation)
    - 7.1. Dự Báo Nhiều Bước
    - 7.2. Chỉ Số Hiệu Suất
    - 7.3. Biểu Đồ Dự Báo vs Thực Tế
 
-8. [**So Sánh Với Regression (Q2)**](#8--so-s%C3%A1nh-v%E1%BB%9Bi-regression-q2)
+8. [**So Sánh Với Hồi Quy (Q2)**](#8--so-s%C3%A1nh-v%E1%BB%9Bi-regression-q2)
    - 8.1. So Sánh Hiệu Suất
    - 8.2. Điểm Mạnh & Điểm Yếu
 
@@ -95,7 +95,7 @@ NOTEBOOK: notebooks/runs/arima_forecasting_run.ipynb
 
 11. [**Kết Luận Cuối Cùng & Khuyến Nghị**](#11--final-conclusions--recommendations)
     - 11.1. Trả Lời Câu Hỏi Nghiên Cứu
-    - 11.2. Key Findings Summary
+    - 11.2. Tóm Tắt Phát Hiện Chính
     - 11.3. Khuyến Nghị Thực Tiễn
 
 ---
