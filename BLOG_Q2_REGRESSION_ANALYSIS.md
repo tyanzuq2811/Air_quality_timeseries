@@ -1,7 +1,7 @@
 # Blog Q2: Phương Pháp Hồi Quy Cho Dự Báo PM2.5
 
 
-## ⚙️ Cấu Hình Pipeline
+## Cấu Hình Pipeline
 
 ```python
 # Cấu Hình Mô Hình Hồi Quy
