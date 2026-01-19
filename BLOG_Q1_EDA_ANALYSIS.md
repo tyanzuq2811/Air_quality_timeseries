@@ -593,18 +593,18 @@ Trục Y: PM2.5 (µg/m³), phạm vi 0-600
 - **Std**: ~85 µg/m³ (rất cao)
 - **Range**: 40-400 µg/m³ (biên độ cực lớn)
 
-**Pattern chi tiết:**
-1. **Daily Cycle rõ ràng:**
-   - Peaks: 7-9h sáng, 18-21h tối (rush hours)
-   - Troughs: 3-5h sáng (minimum traffic)
+**Mẫu hình chi tiết:**
+1. **Chu kỳ hàng ngày rõ ràng:**
+   - Đỉnh (Peaks): 7-9h sáng, 18-21h tối (giờ cao điểm giao thông)
+   - Đáy (Troughs): 3-5h sáng (giao thông thấp nhất)
    - Biên độ trong ngày: 50-100 µg/m³
 
-2. **Intra-day dynamics:**
-   - Tăng nhanh vào sáng sớm (7-9h): +50 µg/m³/hour
-   - Giảm dần sau 22h: disperses overnight
-   - Không smooth - nhiều fluctuations
+2. **Động lực trong ngày:**
+   - Tăng nhanh vào sáng sớm (7-9h): +50 µg/m³/giờ
+   - Giảm dần sau 22h: phân tán qua đêm
+   - Không ôn - nhiều biến động
 
-3. **Multi-day episodes:**
+3. **Các đợt ô nhiễm nhiều ngày:**
    - Có các đợt ô nhiễm kéo dài 3-5 ngày liên tiếp
    - Sau đó giảm đột ngột (gió mạnh, mưa)
 
@@ -615,32 +615,32 @@ Trục Y: PM2.5 (µg/m³), phạm vi 0-600
 - **Std**: ~25 µg/m³ (thấp)
 - **Range**: 15-100 µg/m³ (biên độ nhỏ gấp 4 lần)
 
-**Pattern chi tiết:**
-1. **Daily cycle yếu hơn:**
-   - Peaks vẫn có nhưng không rõ như đông
+**Mẫu hình chi tiết:**
+1. **Chu kỳ hàng ngày yếu hơn:**
+   - Đỉnh vẫn có nhưng không rõ như mùa đông
    - Biên độ trong ngày: 20-30 µg/m³
 
 2. **Ổn định hơn:**
-   - Ít spikes đột ngột
-   - Dao động gentle, predictable hơn
+   - Ít biến động đột ngột
+   - Dao động nhẹ nhàng, dự báo dễ hơn
 
-3. **Quick recovery:**
-   - Sau pollution episode, nhanh chóng về baseline
+3. **Phục hồi nhanh:**
+   - Sau đợt ô nhiễm, nhanh chóng về mức cơ bản
 
 **So sánh Winter vs Summer:**
 
-| Metric | Winter (Jan 2016) | Summer (Jul 2015) | Ratio |
+| Chỉ số | Mùa Đông (Tháng 1/2016) | Mùa Hè (Tháng 7/2015) | Tỷ lệ |
 |--------|-------------------|-------------------|-------|
-| Mean | 150 µg/m³ | 45 µg/m³ | 3.3x |
-| Std | 85 µg/m³ | 25 µg/m³ | 3.4x |
-| Max | 400+ µg/m³ | ~100 µg/m³ | 4x |
-| Daily cycle amplitude | 50-100 µg/m³ | 20-30 µg/m³ | 3x |
+| Trung bình | 150 µg/m³ | 45 µg/m³ | 3.3x |
+| Độ lệch chuẩn | 85 µg/m³ | 25 µg/m³ | 3.4x |
+| Giá trị lớn nhất | 400+ µg/m³ | ~100 µg/m³ | 4x |
+| Biên độ chu kỳ ngày | 50-100 µg/m³ | 20-30 µg/m³ | 3x |
 
-**Kết luận Time Series:**
-- ✅ **Strong yearly seasonality** - cần SARIMA với seasonal component
-- ✅ **Strong daily cycle** - lag 24h critical
-- ✅ **Stationary in mean** - không cần nhiều differencing
-- ⚠️ **Non-stationary in variance** - cần xử lý heteroscedasticity
+**Kết luận Phân Tích Chuỗi Thời Gian:**
+- ✅ **Tính mùa vụ hàng năm mạnh** - cần SARIMA với thành phần mùa
+- ✅ **Chu kỳ hàng ngày mạnh** - lấy trễ 24 giờ quan trọng
+- ✅ **Dừng về trung bình** - không cần nhiều sai phân
+- ⚠️ **Không dừng về phương sai** - cần xử lý phương sai không đồng nhất
 
 ---
 
