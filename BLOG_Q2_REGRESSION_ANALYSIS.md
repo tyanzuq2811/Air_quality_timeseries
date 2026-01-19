@@ -296,7 +296,7 @@ Fold 3: Train [2013-2015] → Validate [2015 Q3]
 
 ---
 
-## 4. 🤖 Lựa Chọn & Huấn Luyện Mô Hình
+## 4. Lựa Chọn & Huấn Luyện Mô Hình
 
 ### 4.1. Tại Sao Chọn Random Forest?
 
