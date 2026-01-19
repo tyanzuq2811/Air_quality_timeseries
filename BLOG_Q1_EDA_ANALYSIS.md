@@ -505,28 +505,50 @@ Các thành phần trực quan:
 ![PM2.5 Time Series Full Period](images/q1_eda/cell_10_output_1.png)
 *Hình 4.1: Chuỗi thời gian PM2.5 đầy đủ - Trạm Aotizhongxin (2013-2017, 35,064 giờ)*
 
-**Mô tả biểu đồ:**
+**Mô tả biểu đồ chi tiết:**
 ```
-[Line plot: PM2.5 concentration over time]
+[Đồ thị đường: Nồng độ PM2.5 theo thời gian]
 
-X-axis: Date (2013-03 to 2017-02), 4 years
-Y-axis: PM2.5 (µg/m³), range 0-600
-Line: Blue, continuous, shows hourly observations
+Trục X: Ngày tháng (2013-03 đến 2017-02), 4 năm đầy đủ
+Trục Y: PM2.5 (µg/m³), phạm vi 0-600
+Đường: Màu xanh dương, liên tục, thể hiện quan sát từng giờ
 
-Key visual features:
-- Regular peaks every winter (Dec-Feb): Reaching 300-600 µg/m³
-- Regular troughs every summer (Jun-Aug): Dropping to 20-80 µg/m³
-- Sawtooth pattern: Sharp spikes followed by gradual declines
-- Amplitude: 3-4x difference between winter peaks and summer troughs
-- No upward/downward trend: Mean stays around 80 µg/m³
+Đặc điểm trực quan chính:
+- Đỉnh đều đặn mỗi mùa đông (Tháng 12-2): Đạt 300-600 µg/m³
+  → Tập trung vào các đợt nghịch nhiệt khí quyển
+  → Kết hợp đốt than sưởi ấm và điều kiện gió yếu
+  
+- Đáy đều đặn mỗi mùa hè (Tháng 6-8): Giảm xuống 20-80 µg/m³
+  → Mưa nhiều giúp làm sạch không khí
+  → Gió mạnh và nhiệt độ cao tăng khuếch tán
+  
+- Mẫu hình răng cưa: Tăng đột ngột sau đó giảm dần
+  → Tăng nhanh trong 1-2 ngày khi có nghịch nhiệt
+  → Giảm từ từ trong 3-5 ngày khi gió thổi tan
+  
+- Biên độ: Chênh lệch 3-4 lần giữa đỉnh đông và đáy hè
+  → Tỷ lệ: ~250 µg/m³ (đông) / ~60 µg/m³ (hè) ≈ 4.2x
+  → Cho thấy mùa vụ là yếu tố chi phối chính
+  
+- Không có xu hướng tăng/giảm dài hạn: Trung bình ổn định quanh 80 µg/m³
+  → Dao động quanh mức baseline cố định
+  → Không có cải thiện hay xấu đi theo năm
 ```
 
-**Visual annotations:**
-- **Winter peaks** (shaded red zones): Dec 2013, Jan 2015, Dec 2015, Jan 2016
-- **Summer troughs** (shaded green zones): Jul 2013, Jul 2014, Jul 2015, Jul 2016
-- **Extreme events**: 
-  - Jan 2013: Spike to 550+ µg/m³ ("Airpocalypse")
-  - Dec 2015: Multiple days >400 µg/m³ (red alert issued)
+**Chú thích trực quan trên biểu đồ:**
+- **Các đỉnh mùa đông** (vùng tô đỏ): Tháng 12/2013, 1/2015, 12/2015, 1/2016
+  → Thời điểm ô nhiễm nghiêm trọng nhất trong năm
+  → AQI thường đạt mức "Hazardous" (>300)
+  
+- **Các đáy mùa hè** (vùng tô xanh lá): Tháng 7/2013, 7/2014, 7/2015, 7/2016
+  → Thời kỳ chất lượng không khí tốt nhất
+  → AQI thường ở mức "Moderate" (50-100)
+  
+- **Sự kiện ô nhiễm cực đoan**: 
+  - Tháng 1/2013: Tăng vọt lên 550+ µg/m³ ("Airpocalypse" - Thảm họa không khí)
+    → Sự kiện lịch sử, khiến chính phủ ban hành cảnh báo đỏ lần đầu
+  - Tháng 12/2015: Nhiều ngày liên tiếp >400 µg/m³ (cảnh báo đỏ được ban hành)
+    → Trường học đóng cửa, hạn chế giao thông
 
 **Quan sát từ biểu đồ full period:**
 
@@ -558,6 +580,11 @@ Key visual features:
    - **Challenge**: Black swan events khó dự báo
 
 ### 4.2. Đồ Thị Phóng To - So Sánh Đông/Hè
+
+**📊 So Sánh Chuỗi Thời Gian: Mùa Đông vs Mùa Hè**
+
+![PM2.5 Winter vs Summer Comparison](images/q1_eda/cell_10_output_2.png)
+*Hình 4.2: So sánh PM2.5 mùa đông (Jan 2016) vs mùa hè (Jul 2015) - Trạm Aotizhongxin*
 
 **Mùa Đông (January 2016):**
 
